@@ -1,0 +1,8 @@
+Setup a TDD in Google cloud
+Steps followed
+1) Created an instance in GCE and allocated resources
+2) Setup a docker container on this VM with Eclipse and Java
+2) Installed VNCviewer to connect to VM from local
+3) Setup a firewall rule in to allow connections from VNC (tcp port:5901)
+4) Write java programs and corresponding test cases
+5) Run the test cases via Eclipse. Later integrate with Jenkins pipeline for CI
