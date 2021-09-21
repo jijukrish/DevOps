@@ -1,9 +1,9 @@
 Creating custom networks in docker host
-[azureuser@dockermaster ~]$ docker network create --driver=bridge --subnet=192.168.0.0/16 --gateway=192.168.0.1  custom1
+[xxx@dockermaster ~]$ docker network create --driver=bridge --subnet=192.168.0.0/16 --gateway=192.168.0.1  custom1
 
-[azureuser@dockermaster ~]$ docker network create --driver=bridge --subnet=172.100.0.0/16 --gateway=172.100.0.1 custom2
+[xxxx@dockermaster ~]$ docker network create --driver=bridge --subnet=172.100.0.0/16 --gateway=172.100.0.1 custom2
 
-[azureuser@dockermaster ~]$ docker network ls
+[xxxx@dockermaster ~]$ docker network ls
 NETWORK ID     NAME          DRIVER    SCOPE
 6a245e8d2bde   bridge        bridge    local
 550e5ac2a55b   custom1       bridge    local
@@ -12,3 +12,15 @@ NETWORK ID     NAME          DRIVER    SCOPE
 733894797c90   new_bridge1   bridge    local
 74a0546407a3   new_bridge2   bridge    local
 88ddbe1e876f   none          null      local
+
+[xxxx@dockermaster ~]$ docker run -itd --network=custom1 --rm --name=tomcat1 -p 1000:8080 tomcat
+
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+5fb68706fb55   tomcat    "catalina.sh run"        15 seconds ago   Up 13 seconds   0.0.0.0:1000->8080/tcp, :::1000->8080/tcp   tomcat1
+$ docker inspect tomcat1
+
+command to copy web files to tomcat local inside the container. The access tomcat on port 1000
+Connect to contianer
+docker exec -it tomcat1 /bin/bash
+cp -r webapps.dist/* webapps/
