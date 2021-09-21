@@ -1,0 +1,14 @@
+Creating custom networks in docker host
+[azureuser@dockermaster ~]$ docker network create --driver=bridge --subnet=192.168.0.0/16 --gateway=192.168.0.1  custom1
+
+[azureuser@dockermaster ~]$ docker network create --driver=bridge --subnet=172.100.0.0/16 --gateway=172.100.0.1 custom2
+
+[azureuser@dockermaster ~]$ docker network ls
+NETWORK ID     NAME          DRIVER    SCOPE
+6a245e8d2bde   bridge        bridge    local
+550e5ac2a55b   custom1       bridge    local
+0eb2dba2b13f   custom2       bridge    local
+75630f6b8b4d   host          host      local
+733894797c90   new_bridge1   bridge    local
+74a0546407a3   new_bridge2   bridge    local
+88ddbe1e876f   none          null      local
