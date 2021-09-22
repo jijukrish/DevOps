@@ -24,3 +24,19 @@ command to copy web files to tomcat local inside the container. The access tomca
 Connect to contianer
 docker exec -it tomcat1 /bin/bash
 cp -r webapps.dist/* webapps/
+
+Adding cutom metwork and connecting networ to a container
+docker network connect custom2 tomcat1
+docker inspect tomcat1 | more
+docker exec -it tomcat1 bash
+ip add show
+
+Create tomcat container(not in running state)
+$ docker create -it --rm --name tomcat2 --network=custom1 -p 3000:8080 tomcat
+$docker ps
+$ docker ps -a
+Attach second custom network to second tomcat container and start
+ $ docker network connect custom2 tomcat2
+$ docker start tomcat2
+docker exec -it tomcat2 bash
+ip add show
