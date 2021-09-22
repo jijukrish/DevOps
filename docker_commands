@@ -40,3 +40,15 @@ Attach second custom network to second tomcat container and start
 $ docker start tomcat2
 docker exec -it tomcat2 bash
 ip add show
+
+Docker images
+Gives list of images creates before a particular imageid
+[user@dockermaster ~]$ docker image ls --filter "before=02c7f2054405"
+$ docker image ls --filter "since=02c7f2054405"
+$ docker images --format "{{.ID}}:{{.Repository}}"
+
+TO remove images by id, tag
+docker image rm <id> <tag> <imagename>
+dangling images are images created with same name. Older images become dangling images
+To remove danglin images
+docker image prune
