@@ -1,0 +1,27 @@
+Setting up Kubernetes cluster and pods step by step
+sudo kubeadm reset - To reset existing cluster
+To intiliase a cluster (1 master and 2 nodes as example)
+1.sudo kubeadmin init
+If above command ran succesfully it will display below information on terminal
+    • Copy the kubeadm join command that you can see on the screen of your master node (This appears after running sudo kubeadm init command)
+Note: kubeadm join command runs with a unique token. 
+    • Run the kubeadm join command as a root user on each of the worker1 and worker2 nodes
+	Note: This is only a sample kubeadm join command
+	sudo kubeadm join 172.31.25.37:6443 --token fmeegy.veyfwhprxyrzgecl \
+	 --discovery-token-ca-cert-hash \
+	sha256:abbbb0e9cad2d51cdb606e9adfdc0acb6e81d26d82603eefded9370df28f8517
+2. mkdir -p $HOME/.kube
+3. sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+4. sudo chown $(id -u):$(id -g) $HOME/.kube/config
+5.sudo kubectl --kubeconfig .kube/config  get nodes
+
+6. Once you ran below command on slave nodes, slave nodes will identify and connect top master(This is a sample only token will vary with installations)
+sudo kubeadm join 172.31.25.37:6443 --token fmeegy.veyfwhprxyrzgecl \
+	 --discovery-token-ca-cert-hash \
+	sha256:abbbb0e9cad2d51cdb606e9adfdc0acb6e81d26d82603eefded9370df28f8517
+
+To create network
+6. kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl             version | base64 |tr -d '\n')"
+
+7 Run below command to get master and slave nodes
+sudo kubectl --kubeconfig .kube/config  get nodes 
