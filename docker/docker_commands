@@ -65,3 +65,24 @@ install apache
 apt-get -y install apache2
 exit the container
 Run docker container commit testubuntu jijukrishnan/apache:2.0
+For message and author info in image
+Run docker container commit --message "new image" --author "jijukrishnan" testubuntu jijukrishnan/apache:3.0
+docker image inspect jijukrishnan/apache:3.0 | grep comment
+
+===============================================================================================================================
+Dockerfile instructions
+.dockerignorefile - present in rootdir and it contains the files that can be ignored by the build context. 
+This helps in preventing sending of unnecessary files to dockerdaemon by CLI
+Sample format
+*
+README*
+docker-compose.yaml
+*.yaml
+instructions in docker file
+FROM - specify a build image using this comand. image is created layer bylayer
+ARG -This can be before FROM, provides arguments to docker CLI
+RUN - Execute commands in a new layer and commits chnages
+RUN can be in two forms
+Shell form :RUN <command> 
+Exec form: RUN["executable","param1',"param2"]
+CMD- sets the defaults for container. Set the command to be executed in command when it starts
