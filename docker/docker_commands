@@ -52,3 +52,16 @@ docker image rm <id> <tag> <imagename>
 dangling images are images created with same name. Older images become dangling images
 To remove danglin images
 docker image prune
+
+Creating images from running container
+download latest ubuntu and run the container
+docker run -itd --rm --name=testubuntu jijukrishnan/ubuntu:1.0
+docker ps
+do an exec to container
+docker exec -it  <containerid> bash
+With in the container bash
+run apt-get -yqq update
+install apache
+apt-get -y install apache2
+exit the container
+Run docker container commit testubuntu jijukrishnan/apache:2.0
