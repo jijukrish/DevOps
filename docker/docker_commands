@@ -86,3 +86,32 @@ RUN can be in two forms
 Shell form :RUN <command> 
 Exec form: RUN["executable","param1',"param2"]
 CMD- sets the defaults for container. Set the command to be executed in command when it starts
+============================================================================================================
+Docker storage layers
+To get accurate infor of storage for containers
+docker ps -s --format 'table{{.Names}}\t{{.Image}}\t{{.Size}}'
+Total size in verbose which docker uses for all containers
+docker system df -v
+
+Default storage driver in docker is overlay2. Storage driver can be changed.
+Steps to change the storage driver are
+Export Data
+Stop Docker
+Edit(or create new ) /etc/docker/daemon.json
+Start docker
+Check docker info
+Import data
+
+docker info| grep "Storage Driver"
+
+Create and manage volume(persistent storage for containers)
+docker volume create testvolume
+docker run -itd --volume=testvolume:/app jijukrishnan/nginx:1.0
+docker exec -it <containerid> bash
+switch to app dir and do a ls
+
+docker volume inspect testvolume
+
+To remove volume
+docker volume rm testvolume
+docker run -itd --rm --name=nginx_test1 --mount source=test_volume2,target=/app --mount source=test_volume1,target=/app2 jijukrishnan/nginx:1.0
