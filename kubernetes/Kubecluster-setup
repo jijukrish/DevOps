@@ -1,0 +1,33 @@
+installing kube cluster for prod
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+Check network config(Mac address and processUUId should be unique)
+ifconfig -a
+sudo cat /sys/class/dmi/id/product_uuid
+
+Make sure that the br_netfilter module is loaded. This can be done by running lsmod | grep br_netfilter. To load it explicitly call sudo modprobe br_netfilter.
+
+sudo sysctl -a |grep net.bridge.bridge-nf-call-iptables
+
+Now install docker run time
+ sudo apt-get update
+ sudo apt-get install -y docker.io
+  Check docker running or not
+ sudo systemctl status docker
+ Install all below
+ kubeadm: the command to bootstrap the cluster.
+
+kubelet: the component that runs on all of the machines in your cluster and does things like starting pods and containers.
+
+kubectl: the command line util to talk to your cluster.
+
+All these done in one shot
+1. first run this command in masger and nodes
+sudo apt-get install -y apt-transport-https ca-certificates curl
+2. Download the Google Cloud public signing key:
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+3. Add the Kubernetes apt repository:
+
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+4. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
