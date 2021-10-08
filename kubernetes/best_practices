@@ -4,3 +4,13 @@ kubectl apply -f kubesample.yaml
 Once services created successfully enter below command to see if all are running
 
 kubectl get all
+
+Understanding the Components of Kubernetes Cluster
+Steps to be followed:
+    1. Executing basic commands of etcd-server
+    2. Executing basic commands of kube-controller-manager
+    3. Executing basic commands of kube-scheduler
+    4. Executing basic commands of kubelet
+    5. Executing basic commands of kube-proxy
+    6. Listing the default pods in a cluster
+    7. Fetching containers from docker
