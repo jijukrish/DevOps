@@ -1,0 +1,6 @@
+Create all config files in one dir ex (configfiles)
+Create a kubesample file and run it using following command
+kubectl apply -f kubesample.yaml
+Once services created successfully enter below command to see if all are running
+
+kubectl get all
