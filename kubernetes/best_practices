@@ -14,3 +14,60 @@ Steps to be followed:
     5. Executing basic commands of kube-proxy
     6. Listing the default pods in a cluster
     7. Fetching containers from docker
+    
+    
+  To delete and recreate node
+kubectl delete node ip-172-31-26-183
+vi nodereg.json
+{
+  "kind": "Node",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "ip-172-31-26-183",
+    "labels": {
+      "name": "firstnode"
+    }
+  }
+}
+
+kubectl create -f ./configfiles/nodereg.json
+kubectl get nodes
+
+
+1.1 Write the following command to define the container runtime:
+sudo kubelet --container-runtime docker
+
+Implementing Role-Based Access Controller in kubernetescluster
+Steps to be followed:
+1. Creating Client Certificate
+	If login user is training1
+	openssl genrsa -out training1.key 2048
+	openssl req -new -key training1.key -out training1.csr
+Execute the following commands to copy the CA certificate and key to the: /home/training1/ folder:
+cd /etc/kubernetes/pki
+sudo cp ca.crt ca.key /home/training1/
+
+
+Run the following command to sign the user key and request with cluster certificate and key:
+sudo openssl x509 -req -in training1.csr -CA ca.crt \
+-CAkey ca.key -CAcreateserial -out training1.crt -days 300
+
+Output
+Signature ok
+subject=C = IN, ST = karnataka, L = Bangalore, O = DEVOPSEXPERTS, OU = Sales, CN = training1, emailAddress = devopsexperts@hotmail.com
+Getting CA Private Key
+
+2. Adding user credentials to the kubeconfig file
+	kubectl config set-credentials training1 \
+--client-certificate=training1.crt --client-key=training1.key
+sudo kubectl --user=training1 get pods 
+We can see user is not authorised 
+3. Creating Role and Role Binding
+	Run below command after creating yaml files
+kubectl apply -f role.yaml 
+kubectl apply -f rolebinding.yaml
+	
+4. Checking the access for the new user
+	kubectl create deployment my-dep --image=nginx
+	kubectl --user=training1 get pods
+kubectl --user=training1 get deployment
