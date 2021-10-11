@@ -1,0 +1,14 @@
+docker compose install and troubleshooting
+
+Installing docker compose
+[azureuser@dockermaster ~]$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+[azureuser@dockermaster ~]$ docker-compose --version
+docker-compose version 1.29.2, build 5becea4c
+When this error occurs with dockker-compose
+docker.errors.DockerException: Error while fetching server API version
+
+Run the below command to set permissions
+
+sudo chmod 666 /var/run/docker.sock

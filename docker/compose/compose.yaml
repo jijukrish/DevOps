@@ -1,0 +1,11 @@
+version: "3"
+services:
+
+mypythonapp:
+ build: .
+ depends_on:
+     - "customsql"
+ command: ["./wait-for-mysql.sh","customsql","python","dbConnect.py","customsql","python","keepAlive.py"]
+
+customsql:
+ imgae: jijukrishnan/mysql:latest
