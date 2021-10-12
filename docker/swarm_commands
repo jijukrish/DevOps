@@ -1,19 +1,30 @@
 initializing SWARM in docker master node
 
-[azureuser@dockermaster ~]$ sudo docker swarm init --advertise-addr 192.168.5.4
+[azureuser@dockermaster ~]$ sudo docker swarm init --advertise-addr master_ipaddress
 Swarm initialized: current node (q9xsi9f1io63dtimeq5hjid4e) is now a manager.
 
 To add a worker to this swarm, run the following command:
 
-    docker swarm join --token SWMTKN-1-5m04qryggfuuhgrue4o0nybm3t9fojnghpl80ax67h8f8ybdhb-ch1poc1xt9ssm3ywitlra3ydm 192.168.5.4:2377
+    docker swarm join --token SWMTKN-1-5m04qryggfuuhgrue4o0nybm3t9fojnghpl80ax67h8f8ybdhb-ch1poc1xt9ssm3ywitlra3ydm ipaddress:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 
 Run in a node
-kubeadmin@KubeMaster:~$ docker swarm join --token SWMTKN-1-5m04qryggfuuhgrue4o0nybm3t9fojnghpl80ax67h8f8ybdhb-ch1poc1xt9ssm3ywitlra3ydm 192.168.5.4:2377
+kubeadmin@KubeMaster:~$ docker swarm join --token SWMTKN-1-5m04qryggfuuhgrue4o0nybm3t9fojnghpl80ax67h8f8ybdhb-ch1poc1xt9ssm3ywitlra3ydm ipaddress:2377
 This node joined a swarm as a worker.
 
 Now run in master
 docker info
 To see nodes running in SWARM
 docker node ls
+
+To inspect node
+docker node  inspect KubeMaster --pretty
+To promote a node to master in SWARM
+docker node promote NODE [Node...]
+
+To demote a master to node
+docker node demote NODE [Node...]
+
+docker node leave --help (Run on worker node)
+docker node rm --help (Run on master nodes to remove nodes that left)
