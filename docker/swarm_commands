@@ -1,0 +1,19 @@
+initializing SWARM in docker master node
+
+[azureuser@dockermaster ~]$ sudo docker swarm init --advertise-addr 192.168.5.4
+Swarm initialized: current node (q9xsi9f1io63dtimeq5hjid4e) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-5m04qryggfuuhgrue4o0nybm3t9fojnghpl80ax67h8f8ybdhb-ch1poc1xt9ssm3ywitlra3ydm 192.168.5.4:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+Run in a node
+kubeadmin@KubeMaster:~$ docker swarm join --token SWMTKN-1-5m04qryggfuuhgrue4o0nybm3t9fojnghpl80ax67h8f8ybdhb-ch1poc1xt9ssm3ywitlra3ydm 192.168.5.4:2377
+This node joined a swarm as a worker.
+
+Now run in master
+docker info
+To see nodes running in SWARM
+docker node ls
