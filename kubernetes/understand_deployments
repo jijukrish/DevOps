@@ -24,3 +24,25 @@ kubectl apply -f nodeAffinity.yaml
 
 Execute the following command to find the status of all the updated pods
 kubectl get pods -o wide | grep -v blue
+=====================================================================================
+Understanding init Containers
+vi demofile.yaml
+kubectl apply -f demofile.yaml
+========================================================================================
+Managing Container Resources
+vi facebookdeployment.yaml
+    1.2 Add the following code under spec>>template>>spec>>containers:
+resources:
+          requests:         # Minimum Value
+          	memory:     "100Mi"
+        	cpu:          "250m"
+          limits:      #Maximum Value
+            memory:  "128Mi"
+            cpu: "300m"     # 1 Core = 1000m
+ip-172-31-30-250:~/deployments$ kubectl apply -f facebookdeployment.yaml -n test
+deployment.apps/mynginx configured
+service/web-service unchanged
+
+kubectl get all -n test
+kubectl describe pod mynginx-85b6cfbbc7-45zpq -n test
+==============================================================================================
