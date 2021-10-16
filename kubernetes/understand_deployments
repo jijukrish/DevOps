@@ -46,3 +46,10 @@ service/web-service unchanged
 kubectl get all -n test
 kubectl describe pod mynginx-85b6cfbbc7-45zpq -n test
 ==============================================================================================
+Understanding Health Monitoring
+vi healthdemo.yaml
+kubectl apply -f healthdemo.yaml
+Enter the following command to check the status:
+kubectl get pods -A -o wide
+==========================================================================================
+Creating Multi Container Pods
