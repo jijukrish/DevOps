@@ -1,0 +1,4 @@
+kubectl create namespace test
+mkdir deployments
+cd deployments
+vi facebookdeployment.yaml
