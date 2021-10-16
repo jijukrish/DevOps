@@ -14,3 +14,13 @@ kubectl apply -f singlepod.yaml
 Note: If an error shows up while executing Step 1.4, try executing the following command:
 kubectl apply -f singlepod.yaml --validate=false
 kubectl get pods -n devopsexperts
+===========================================================================
+Understand Pod Lifecycle
+kubectl describe pod webserver -n devopsexperts
+Understand the Working of Pod Allocation
+vi nodeAffinity.yaml
+Add content
+kubectl apply -f nodeAffinity.yaml
+
+Execute the following command to find the status of all the updated pods
+kubectl get pods -o wide | grep -v blue
