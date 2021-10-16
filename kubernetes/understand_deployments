@@ -6,3 +6,11 @@ Add deployment creation content in above file
 
 kubectl apply -f facebookdeployment.yaml
 kubectl rollout status deployment/mynginx -n test
+========================================================
+SIngle pod deployments
+kubectl create namespace devopsexperts
+vi singlepod.yaml
+kubectl apply -f singlepod.yaml
+Note: If an error shows up while executing Step 1.4, try executing the following command:
+kubectl apply -f singlepod.yaml --validate=false
+kubectl get pods -n devopsexperts
