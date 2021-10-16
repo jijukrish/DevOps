@@ -2,3 +2,7 @@ kubectl create namespace test
 mkdir deployments
 cd deployments
 vi facebookdeployment.yaml
+Add deployment creation content in above file
+
+kubectl apply -f facebookdeployment.yaml
+kubectl rollout status deployment/mynginx -n test
