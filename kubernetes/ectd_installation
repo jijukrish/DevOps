@@ -1,0 +1,9 @@
+Ubuntu
+sudo apt remove  etcd-server
+sudo apt install etcd-server
+etcd --version
+etcd name --check
+    2.1 Type the following command to install kube-controller-manager:
+sudo snap install kube-controller-manager
+     ype the following command to install kube-scheduler:
+sudo snap install kube-scheduler
