@@ -7,3 +7,26 @@ etcd name --check
 sudo snap install kube-controller-manager
      ype the following command to install kube-scheduler:
 sudo snap install kube-scheduler
+
+    4.4 Use the following command to write logs to their native severity level:
+kubelet --one-output
+Step 5: Executing basic commands of kube-proxy
+    5.1 On the master node, install kube-proxy
+	sudo snap install kube-proxy --classic
+    5.2 Use the following command to check whether kube-proxy is successfully installed or not
+kube-proxy --version
+
+    6.1 Use the following command to get all the pods in a cluster:
+kubectl get pods -A
+    6.2 Use the following command to fetch all replica sets:
+kubectl get rs -A
+    6.3 Use the following command to fetch all the deployments in a cluster:
+kubectl get deployments -A
+    6.4 Use the following command to get all the services in a cluster:
+kubectl get svc -A
+kubeadmin@KubeMaster:~/deployment$ kubectl get svc -A
+NAMESPACE     NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+default       kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP                  9h
+kube-system   calico-typha   ClusterIP   10.108.41.183   <none>        5473/TCP                 9h
+kube-system   kube-dns       ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP   9h
+test          web-service    NodePort    10.107.171.17   <none>        80:32003/TCP             7h51m

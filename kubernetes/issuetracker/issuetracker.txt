@@ -15,4 +15,7 @@ Create pod
 kubectl apply -f <yamlfile>.yaml
 Check pod status
 kubectl get pods -n signfx
+
+Kubectl get pods -A
+Now all the pods wil show in running state
 ===============================================================================================================
