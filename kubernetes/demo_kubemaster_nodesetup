@@ -14,3 +14,19 @@ This node has joined the cluster:
 * The Kubelet was informed of the new secure connection details.
 
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+
+kubeadmin@KubeMaster:~$ kubectl get pods --all-namespaces
+NAMESPACE     NAME                                       READY   STATUS              RESTARTS         AGE
+kube-system   calico-kube-controllers-75f8f6cc59-vzms8   1/1     Running             0                91m
+kube-system   calico-node-dm5fj                          0/1     Running             28 (5m51s ago)   92m
+kube-system   calico-node-dnp96                          0/1     Init:0/3            0                6m37s
+kube-system   calico-typha-569b85fd8c-lqtfb              0/1     ContainerCreating   0                92m
+kube-system   coredns-78fcd69978-n5kwr                   1/1     Running             0                103m
+kube-system   coredns-78fcd69978-nkcnq                   1/1     Running             0                103m
+kube-system   etcd-kubemaster                            1/1     Running             2                104m
+kube-system   kube-apiserver-kubemaster                  1/1     Running             1                104m
+kube-system   kube-controller-manager-kubemaster         1/1     Running             0                104m
+kube-system   kube-proxy-7hxnc                           0/1     ContainerCreating   0                6m37s
+kube-system   kube-proxy-hxfg2                           1/1     Running             0                104m
+kube-system   kube-scheduler-kubemaster                  1/1     Running             1                104m
+
