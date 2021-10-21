@@ -59,3 +59,20 @@ vi nodereg.json
 kubectl create -f ./configfiles/nodereg.json
 kubectl get nodes
 =========================================================================================================================
+How to create a static pod
+In one of the worker nodes
+cd /etc/kubernetes/manifests
+sudo vi staticpod.yaml
+Copy the content from staticpod.yaml file in yaml folder of repo
+Use the following command to modify the kubelet config file:(Take a backup before changing config)
+sudo vi /var/lib/kubelet/config.yaml
+Modify the staticPodPath in /var/lib/kubelet/config.yaml file:
+staticPodPath: /etc/kubernetes/manifests/staticpod.yaml 
+Run the following the command to restart the kubelet service:
+sudo systemctl restart kubelet
+
+Check in Master by typing:
+kubectl get pods -A
+
+docker ps in worker node
+==========================================================================================================================
