@@ -1,0 +1,8 @@
+Create aws infrastructure using terraform
+create main.tf and include all code to this file
+Connect to AWS using credentail. Set the region'
+Run 
+terraform fmt
+terraform validate
+To create infra - terraform apply
+To destry instance -terraform destroy
