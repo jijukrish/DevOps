@@ -1,0 +1,24 @@
+for centos and redhat
+with YUM
+Enbale puppet platform on yum. This is eanbling puppet version in yum repository
+sudo rpm -Uvh https://yum.puppet.com/puppet7-release-el-8.noarch.rpm
+Puppet runs on a JVM and the steps required to install puppet are below
+Puppet 7 requires java 8 or 11
+If java not present install using
+sudo yum -y install java-11-openjdk java-11-openjdk-devel
+
+install puppet server
+sudo yum install puppetserver
+Start the Puppet Server service: sudo systemctl start puppetserver
+Open a new shell, or use exec bash to update your PATH
+
+To check if you installed the Puppet Server correctly, run: puppetserver -v
+
+Step Result: If you correctly installed Puppet Server, the command displays the correct version.
+
+To install agent
+sudo yum install puppet-agent
+
+Installing puppet agent on amazon linux vm
+sudo 
+sudo yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm

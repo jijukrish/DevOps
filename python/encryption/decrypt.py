@@ -1,12 +1,12 @@
 from cryptography.fernet import Fernet
 # opening the key
-with open('filekey.key', 'rb') as filekey:
-    key = filekey.read()
+with open('file.key', 'rb') as file:
+    key = file.read()
 # using the key
 fernet = Fernet(key)
   
 # opening the encrypted file
-with open('output.txt', 'rb') as enc_file:
+with open('info.txt', 'rb') as enc_file:
     encrypted = enc_file.read()
   
 # decrypting the file
@@ -14,5 +14,5 @@ decrypted = fernet.decrypt(encrypted)
   
 # opening the file in write mode and
 # writing the decrypted data
-with open('output.txt', 'wb') as dec_file:
+with open('info.txt', 'wb') as dec_file:
     dec_file.write(decrypted)

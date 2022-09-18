@@ -1,0 +1,15 @@
+1  echo "" > .bash_history 
+    2  sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+    3  launchpad version
+    4  vi .bashrc 
+    5  crontab -l
+    6  ps -ef
+    7  ps -ef |egrep dcv
+    8  dcv list-sessions
+    9  sudo su
+   10  crontab -l
+   11  crontab -e
+   12  exit
+   13  whoami
+   14  sudo docker info
+   15  history

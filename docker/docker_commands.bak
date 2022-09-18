@@ -24,11 +24,7 @@ docker image import - To import the contents from a tar to create a file system 
 docker image import nginx.tar
 docker image inspect - Display detiled infromation of one or more images
 docker image inspect nginx | more
-commands to tag and upload images to docer hub
-login to hub.docker.com
-tag an image
-docker image tag centos:31122021 6791/devopsexperts_demo
-
+docker 
 
 Creating custom networks in docker host
 [xxx@dockermaster ~]$ docker network create --driver=bridge --subnet=192.168.0.0/16 --gateway=192.168.0.1  custom1

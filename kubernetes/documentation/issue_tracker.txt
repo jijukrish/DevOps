@@ -1,0 +1,7 @@
+Error in adding nodes to cluster. Error in opening config file
+Run the command in nodes to see if nodes can open config from master
+kubectl -n kube-system get cm kubeadm-config -o yaml
+If error The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
+Troubleshooting commands
+kubectl  config view in master and nodes

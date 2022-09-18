@@ -1,0 +1,5 @@
+to start instance
+aws ec2 start-instances --instance-ids i-0b23c75f9b0df6fb7
+
+List instances
+aws ec2 describe-instances
