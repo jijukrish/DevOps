@@ -1,0 +1,2 @@
+Azure iaasV2 network
+https://www.linkedin.com/pulse/comparing-azure-iaas-v1-v2-virtual-machines-eray-altili

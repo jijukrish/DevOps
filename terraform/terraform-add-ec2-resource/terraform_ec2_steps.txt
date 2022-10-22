@@ -1,0 +1,22 @@
+How to provision aws instance using terraform.
+Step1 : 
+Install terraform cli 
+Step2
+Have a AWS account and credentials ready (required AWS key, secret key) of account
+Step3
+Create a subfolder and add main.tf, terraform.tf using touch
+Step4 
+Write your AWS infra in main.tf
+
+Step4 
+Write the terraform block in terraform
+Step5
+Run AWS configure
+Step 6 
+Run terraform init
+Step 7
+Run terraform plan- This command will provide you a plan which terrform is going to do in your cloud provider
+Step 8
+Once you are happy with plan run
+terraform apply
+This will create resources in cloud as per the declarative script(main.tf)
