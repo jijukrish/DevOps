@@ -12,3 +12,16 @@ run terraform apply to apply the changes
 
 If you want to destroy resources
 run terraform destroy
+
+SSH key issue with mobaxterm in connecting to servers
+The ky need to be created with Ed25519 more advanced type of key
+https://superuser.com/questions/1678830/server-refused-our-key-only-from-mobaxterm-bookmark-setup
+
+Edit sshd_config file sudo vi /etc/ssh/sshd_config.
+Search for PasswordAuthentication
+If it is no, change it to yes. For me it was commented. If so, uncomment it.
+Restart sshd service sudo systemctl restart sshd.service
+
+==================================================
+Creating a AWS instance with user-data
+Refer instance-user-data.tf script
