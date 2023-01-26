@@ -1,0 +1,34 @@
+---
+- name: Setup apache webserver
+  hosts: all
+  become: true
+  tasks:
+    - name: install httpd
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+    - name: custom index html
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        content: |
+                    Custom Web page
+    - name: httpd service eenabled
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+    - name: Install firewalld
+      ansible.builtin.yum:
+        name: firewalld
+        state: latest
+    - name: firewalld enabled
+      ansible.builtin.service:
+        name: firewalld
+        state: started
+        enabled: true
+    - name: open firewall
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
