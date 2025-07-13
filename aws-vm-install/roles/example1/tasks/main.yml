@@ -1,0 +1,5 @@
+---
+- name: Sample playbook
+  become: yes
+  ansible.builtin.command: cat /etc/motd
+  register: mymotd

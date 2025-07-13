@@ -1,0 +1,26 @@
+---
+- name: Install Nginx on Ubuntu
+  become: yes  # Use become to execute tasks with elevated privileges
+  tasks:
+    - name: Ensure apt is updated
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Fix broken dependencies
+      apt:
+        name: "*"
+        state: fixed
+      changed_when: false
+
+    - name: Wait for apt lock to be released
+      shell: "while sudo lsof /var/lib/dpkg/lock; do sleep 5; done"
+      changed_when: false
+      ignore_errors: true # Handles cases where there might not be a lock
+
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        install_recommends: yes

@@ -1,0 +1,8 @@
+---
+- name: Example play book
+  hosts: all
+  remote_user: ansible
+  become_method: sudo
+  roles:
+    - python
+

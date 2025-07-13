@@ -1,0 +1,15 @@
+---
+- name: Install packages for python env
+  become: yes
+  apt:
+    name:
+      - python3-pip
+    update-cache: yes
+- name: Creates directory
+  file:
+    path: ./basic-http-server
+    state: directory
+- name: Install apache
+  become: yes
+  apt: name=apache2 update-cache=yes state=latest
+
