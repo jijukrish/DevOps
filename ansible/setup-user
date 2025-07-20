@@ -1,0 +1,23 @@
+ sudo useradd -m -d /home/ansible -s /bin/bash ansible
+sudo mkdir /home/ansible/.ssh
+sudo chown -R ansible:ansible /home/ansible/.ssh
+sudo chmod 700 /home/ansible/.ssh
+sudo chmod600 /home/ansible/.ssh/authorized_keys
+sudo chmod 600 /home/ansible/.ssh/authorized_keys
+sudo usermod -a -G sudo ansible
+sudo passwd ansible
+ls /home/ubuntu/
+ls -alh /home/ubuntu/
+ls -alh /home/ubuntu/.ssh/
+ls /home/ansible/.ssh/
+
+https://github.com/jijukrish/DevOps/blob/master/ansible/ansible-EE/execution-environment.yml
+
+
+How to setup ansible master node key in target nodes
+two hosts master in centos, target node in ubuntu
+login to master as the automation user for example a user with name ansible
+run ssh-keygen to create keys
+run ssh-copy-id ansible@targetIP
+then ansible ping
+ansible TARGET-IP-ADDRESS -m ping -u USER -vvv
