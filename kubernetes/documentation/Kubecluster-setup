@@ -21,13 +21,14 @@ kubelet: the component that runs on all of the machines in your cluster and does
 kubectl: the command line util to talk to your cluster.
 
 All these done in one shot
-1. first run this command in masger and nodes
+The google repos for K8s are retired and now the new process to install K8s is
+https://kubernetes.io/blog/2023/08/15/pkgs-k8s-io-introduction/
+1. run this command in master and nodes
 sudo apt-get install -y apt-transport-https ca-certificates curl
-2. Download the Google Cloud public signing key:
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-3. Add the Kubernetes apt repository:
-
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+2. Add the Kubernetes apt repository: Replace the apt repository definition so that apt points to the new repository instead of the Google-hosted repository. Make sure to replace the Kubernetes minor version in the command below with the minor version that you're currently using:
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+3. Download the Google Cloud public signing key:
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 4. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
