@@ -32,6 +32,11 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --
 4. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+sudo systemctl enable --now kubelet (Otional)
+
+https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
 
 Check if kubelet is started. If Kubelet encountering issues with below error
 kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
