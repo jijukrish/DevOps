@@ -19,3 +19,13 @@ kubectl get pods -n signfx
 Kubectl get pods -A
 Now all the pods wil show in running state
 ===============================================================================================================
+Issue 2: The connection to the server <host>:6443 was refused - did you specify the right host or port?
+while executing kubectl get nodes in master
+solution1
+sudo -i
+swapoff -a
+exit
+strace -eopenat kubectl version
+
+solution2
+https://serverfault.com/questions/1119056/kubelet-is-in-running-state-but-kubectl-is-giving-connection-to-the-server-refus
