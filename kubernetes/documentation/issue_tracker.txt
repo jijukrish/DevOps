@@ -5,3 +5,7 @@ If error The connection to the server localhost:8080 was refused - did you speci
 
 Troubleshooting commands
 kubectl  config view in master and nodes
+if kube-api server is not coming up due to some config file errors, ways to troubleshoot
+check the logs  tail -f /var/log/syslog | grep kube-apiserver
+The output will show if any errors in config file. When the api server is down it will write error like below
+controlplane kubelet[1513]: E0831 21:27:00.652972    1513 mirror_client.go:138] "Failed deleting a mirror pod" err="Delete \"https://172.30.1.2:6443/api/v1/namespaces/kube-system/pods/kube-apiserver-controlplane\": dial tcp 172.30.1.2:6443: connect: connection refused" pod="kube-system/kube-apiserver-controlplane"
